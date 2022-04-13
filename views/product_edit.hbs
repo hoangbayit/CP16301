@@ -1,0 +1,82 @@
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<!-- MENU SECTION END-->
+<div class="content-wrapper" style="background: aqua;">
+    <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h1 class="header-line">Chi Tiết Sản Phẩm</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+                <div class="panel panel-info" style="border-radius: 25px; border-width: 2px; border-color: black;">
+                    <div class="panel-body">
+                        <form role="form" method="post" action="/san-pham/{{product._id}}/edit"
+                            enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" value="{{product.name}}" name="name" />
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input class="form-control" type="number" value="{{product.price}}" name="price" />
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input class="form-control" type="number" value="{{product.quantity}}"
+                                    name="quantity" />
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" type="description"
+                                    name="description">{{product.description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="category_id">
+                                    {{#each categories}}
+                                    {{#if this.selected}}
+                                    <option selected value="{{this._id}}">{{this.name}}</option>
+                                    {{else}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input class="form-control" name="image" type="file" />
+                                <img width="300" height="300" src="{{product.image}}" />
+                            </div>
+                            <div class="form-group">
+                                <label>Released</label>
+                                <input class="form-control" value="{{product.released}}" name="released" type="date" />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="reset" class="btn btn-reset">Reset</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

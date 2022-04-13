@@ -1,0 +1,77 @@
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<div class="content-fluid" style="align-items: center; background-color: white; height:657px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="images/logo.png" />
+            </div>
+            <div class="col-md-12">
+                <h1 class="header-line" style="margin-top: 10%;">Login</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+                <div class="panel" style="border-radius: 25px; height: 260px;">
+                    <div class="panel-body">
+                        <form role="form" method="post" action="/dang-nhap">
+                            <div class="form-group" style="margin-bottom: 30px; margin-top: 10px;">
+
+                                <label>Username</label>
+                                <input class="form-control" id="login-username" onchange="validation()" type="text"
+                                    name="username" placeholder="Nhâp tài khoản " />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" id="login-password" name="password" onchange="validation()"
+                                    placeholder="Nhập mật khẩu " type="password" />
+                            </div>
+
+                            <div style="display: flex; margin-top: 25px;">
+                                <button type="submit" class="btn btn-danger" id="submit" onchange="validation()" disabled
+                                    style="margin-left: 10%; width: 100px; background-color: black;">Login</button>
+
+                                <button type="submit" class="btn btn-danger"
+                                    style="margin-left: 40%; width: 100px; background-color: black;">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const validation = () => {
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        const submit = document.getElementById('submit');
+
+
+        if (!username || username.trim().length == 0 || 
+            !password || password.trim().length == 0) {
+            submit.disabled = true;
+        } else {
+            submit.disabled = false;
+        }
+    }
+</script>

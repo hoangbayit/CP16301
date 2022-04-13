@@ -1,0 +1,109 @@
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<!-- MENU SECTION END-->
+<div class="content-wrapper" style="background: aqua;">
+    <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h1 class="header-line">Thêm Mới Sản Phẩm</h1>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+                <div class="panel panel-info" style="border-radius: 25px; border-width: 2px; border-color: black;">
+                    <div class="panel-body">
+                        <form role="form" method="post" action="/san-pham" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" onchange="validation()" id="name-product" type="text"
+                                    name="name" />
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input class="form-control" onchange="validation" id="price" type="number"
+                                    name="price" />
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input class="form-control" onchange="validation" id="quantity" type="number"
+                                    name="quantity" />
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" name="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="category_id">
+                                    {{#each categories}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input id="image-file" class="form-control" onchange="onChangeFile()" name="image"
+                                    type="file" />
+                                <img id="image-view" style="display: none; object-fit: cover;" width="300" height="300"
+                                    src="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Released</label>
+                                <input class="form-control" id="released" name="released" type="date" />
+                            </div>
+
+                            <button type="submit" id="submit" onchange="validation()"
+                                class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-reset">Reset</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const validation = () => {
+            const name_product = document.getElementById('name-product').value;
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+            const released = released.getElementById('released').value;
+            const submit = document.getElementById('submit');
+
+
+            if (!name_product || name_product.trim().length == 0) {
+                submit.disabled = true;
+            } else {
+                submit.disabled = false;
+            }
+        }
+        const onChangeFile = () => {
+            const file = document.getElementById('image-file').files[0];
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('image-view').src = e.target.result;
+                document.getElementById('image-view').style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
