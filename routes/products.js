@@ -32,7 +32,7 @@ const upload = require("../middle/upload");
   let {body , file } = req;
   let image = '';
   if (file){
-    image = `http://10.82.148.80:3000/images/${file.filename}`
+    image = `https://cp6301.herokuapp.com/images/${file.filename}`
   }
   body = {...body,image}
   // dấu... có td: thêm 1 thuốc tính vô thêm , đưa thuộc tính hình vào trong body
@@ -87,7 +87,7 @@ router.get("/:id/edit", [authentication.checkLogin], async function (req, res, n
   let {body , file, params } = req;
   delete body.image;
   if (file){
-    let image = `http://10.82.148.80:3000/images/${file.filename}`
+    let image = `https://cp6301.herokuapp.com/images/${file.filename}`
     body = {...body,image}
   }
   console.log('body_edit = ' , body);
